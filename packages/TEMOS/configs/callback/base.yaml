@@ -1,0 +1,7 @@
+defaults:
+  - /callback/viz_checkpoint@viz_ckpt
+  - /callback/last_checkpoint@last_ckpt
+  - /callback/latest_checkpoint@latest_ckpt
+  - /callback/best_checkpoint@best_ckpt
+  - /callback/progress@progress
+dirpath: /ps/scratch/achandrasekaran/asymov

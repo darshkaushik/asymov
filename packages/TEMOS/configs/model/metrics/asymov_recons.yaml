@@ -1,0 +1,20 @@
+_target_: temos.model.metrics.ReconsMetrics
+
+traj: ${model.traj}
+
+recons_types: ['very_naive', 'naive', 'naive_no_rep']
+filters: ['none', 'uniform', 'spline']
+
+gt_path: ${path.datasets}/${cluster_data}_inplace_data.pkl
+
+recons_fps: 25.0 #desired fps for mpjpe calculation and visualization
+pred_fps: 12.5 #same as fps of predictions
+gt_fps: 100.0 #fps of KIT
+
+num_mw_clusters: ${num_mw_clusters}
+decoding_scheme: ${model.decoding_scheme}
+beam_width: ${model.beam_width}
+
+#TODO change naming of cluster files
+cluster2keypoint_mapping_path: ${path.datasets}/proxy_centers_${data.cluster_data}.pkl
+cluster2frame_mapping_path: ${path.datasets}/proxy_centers_complete_${data.cluster_data}.pkl

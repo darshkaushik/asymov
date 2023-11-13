@@ -1,0 +1,11 @@
+name: actor_decoder
+_target_: temos.model.motiondecoder.asymov.AsymovDecoder
+
+vocab_size: ${model.vocab_size}
+latent_dim: ${model.latent_dim}
+
+ff_size: ${model.ff_size}
+num_layers: ${model.num_layers}
+num_head: ${model.num_head}
+dropout: ${model.dropout}
+activation: ${model.activation}

@@ -1,0 +1,29 @@
+# Temp files
+*~
+*.swp
+__pycache__
+.ipynb_checkpoints
+.vscode
+*DS_Store
+*.zip
+
+# Data, viz
+kit-molan/xyz_data.pkl
+packages/R-Drop/
+packages/TEMOS/datasets/fke_inplace_data.pkl
+packages/Complextext2animation/src/dataProcessing/
+packages/TEMOS/datasets/kit-splits
+packages/TEMOS/datasets/kit-splits-tiny
+*.json
+*.pkl
+
+# Output, viz., logs
+packages/acton/kit_logs/
+kit-molan/code/test_viz/
+packages/acton/logs/
+packages/acton/wandb/
+packages/TEMOS/outputs/
+
+# Models
+packages/TEMOS/pretrained_models/
+

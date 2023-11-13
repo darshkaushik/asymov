@@ -1,0 +1,14 @@
+name: vanilla_transformer
+_target_: temos.model.transformer.vanilla.Seq2SeqTransformer
+
+traj: ${model.traj}
+
+num_encoder_layers: ${model.num_encoder_layers}
+num_decoder_layers: ${model.num_decoder_layers}
+emb_size: ${model.emb_size}
+nhead: ${model.nhead}
+src_vocab_size: ${model.text_vocab_size}
+tgt_vocab_size: ${model.mw_vocab_size}
+dim_feedforward: ${model.dim_feedforward}
+
+dropout: ${model.dropout}

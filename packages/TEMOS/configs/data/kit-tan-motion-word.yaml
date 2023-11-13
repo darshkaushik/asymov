@@ -1,0 +1,29 @@
+name: kit-tan-motion-word
+_target_: temos.data.kit_motion_word.KITMotionWordDataModule
+
+# Paths
+datapath: ${path.datasets}/kit
+dataname: ${.name}.pkl
+splitpath: ${path.datasets}/kit-splits
+
+# No Amass
+load_amass_data: false
+load_with_rot: false
+
+# Text
+pick_one_text: true
+
+# Machine
+batch_size: ${machine.batch_size}
+num_workers: ${machine.num_workers}
+
+# Motion
+vocab_size: 971
+framerate: 12.5
+sampler: ${sampler}
+# defaults:
+#   - /transforms/xyz.yaml@transforms
+
+# Other
+tiny: false
+progress_bar: true

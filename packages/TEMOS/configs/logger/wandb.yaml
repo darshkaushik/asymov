@@ -1,0 +1,10 @@
+logger_name: wandb
+version: ${run_id}
+
+save_dir: ${path.working_dir}
+project: ${experiment}
+
+offline: false
+resume: allow
+save_code: false
+log_model: false

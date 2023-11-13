@@ -1,0 +1,33 @@
+cluster_data: ${cluster_data}
+name: kit-${.cluster_data}-motion-word
+_target_: temos.data.kit_motion_word.KITMotionWordMTDataModule
+
+# Padding and vocabulary
+special_symbols: ['<pad>', '<bos>', '<eos>', '<unk>'] 
+num_mw_clusters: ${num_mw_clusters}
+
+# Traj
+traj: ${traj}
+
+# Paths
+datapath: ${path.datasets}/kit
+mw_dataname: ${.name}.pkl
+traj_dataname: fke_traj_data.pkl
+ann_dataname: anns.json
+splitpath: ${path.datasets}/kit-splits
+
+# Text
+pick_one_text: true
+
+# Machine
+batch_size: ${machine.batch_size}
+num_workers: ${machine.num_workers}
+
+# Motion
+vocab_size: ${num_mw_clusters}
+framerate: 12.5
+sampler: ${sampler}
+
+# Other
+tiny: false
+progress_bar: true

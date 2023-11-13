@@ -1,0 +1,43 @@
+# 
+# Config file containing params for visualizing results.
+# Designed as input for object from visualize.Viz() class.
+# 
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+
+path: .
+viz_dir: ${path}/outputs/kit-xyz-motion-word/full_dataset/asymov_mt_ps102/reconstructions
+
+cluster_data: xyz  #{tan, tan64, xyz}
+
+datapath: ${path}/datasets  # not /kit
+splitpath: ${path}/datasets/kit-splits-tiny
+split: recons
+sk_type: kitml
+
+data_fnames:
+    gt: ${cluster_data}_data.pkl
+    clid2kp: proxy_centers_${cluster_data}.pkl
+    clid2frame: proxy_centers_complete_${cluster_data}.pkl
+    # seq2clidx: ${datapath}/contiguous_frame2cluster_mapping.pkl
+
+fps:
+    out_fps: 25.0  # desired fps for mpjpe calculation and visualization
+    pred_fps: 12.5  # fps of predictions
+    gt_fps: 100.0  # fps of KIT Motion-Language mocap seqs.
+
+approaches:
+    gt: false 
+    gt_clid: false 
+    # If you want inference, reconstruct and viz., give ckpt path below
+    temos_bl: false  # pretrained_models/kit-mmm-xyz/3l49g7hv
+    asymov_temos: false #outputs/kit-xyz-motion-word/asymov_full_run_1/uoon5wnl/checkpoints/viz-epoch-144.ckpt
+    asymov_mt: false #outputs/kit-xyz-motion-word/full_dataset/asymov_mt_ps102/checkpoints/viz-epoch-144.ckpt
+    # If already inferenced, just want reconstruct and viz., give inference samples path below  
+    recons_viz: ${path}/outputs/kit-xyz-motion-word/full_dataset/asymov_mt_ps102/samples/neutral_recons
+
+rec_type: ['naive', 'naive_no_rep']
+
+filters: ['none', 'uniform', 'spline']

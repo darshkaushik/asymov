@@ -1,0 +1,31 @@
+modelname: asymov
+_target_: temos.model.asymov.Asymov
+
+vocab_size: ${data.vocab_size}
+latent_dim: 256
+vae: true
+
+# transforms: ${transforms}
+
+ff_size: 1024
+num_layers: 6
+num_head: ${model.num_layers}
+dropout: 0.1
+activation: "gelu"
+
+cross_modal_loss: func_latent #{"func_cos", "func_latent"}
+
+defaults:
+  - textencoder: distilbert_actor
+  - motionencoder: asymov
+  - motiondecoder: asymov
+  - losses: asymov
+  - metrics: asymov_recons
+  - optim: adamw
+  - /model/losses/function/crossEntropy@func_recons
+  - /model/losses/function/smoothL1@func_latent
+  - /model/losses/function/kl@func_kl
+  - /model/losses/function/cosSimilarityLoss@func_cos
+
+func_recons:
+  ignore_index: ${model.vocab_size}

@@ -1,0 +1,33 @@
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+
+logger_level: INFO
+folder: ???
+cluster_data: ??? #{tan, tan64, xyz}
+
+defaults:
+  - /path@path
+
+datapath: ${path.datasets} #not /kit
+splitpath: ${path.datasets}/kit-splits
+split: recons
+sk_type: kitml
+
+gt: xyz_data.pkl
+contiguous_frame2cluster_mapping: contiguous_frame2cluster_mapping.pkl
+cluster2keypoint_mapping: proxy_centers_${cluster_data}.pkl
+cluster2frame_mapping: proxy_centers_complete_${cluster_data}.pkl
+
+recons_fps: 25.0 #desired fps for mpjpe calculation and visualization
+pred_fps: 12.5 #same as fps of predictions
+gt_fps: 100.0 #fps of KIT
+
+visualize: true
+force: false
+viz_dir: reconstructions # folder/viz_dir
+
+visualize_gt: true
+force_gt: false
+viz_gt_dir: constructions # datapath/viz_gt_dir

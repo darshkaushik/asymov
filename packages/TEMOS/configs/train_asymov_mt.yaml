@@ -1,0 +1,47 @@
+hydra:
+  run:
+    dir: outputs/${data.name}/${experiment}/${run_id}
+
+# Global configurations shared between different modules
+experiment: ???
+traj: true
+
+seed: 1234
+
+logger_level: INFO
+run_id: ${generate_id:}
+resume_ckpt_path:
+wandb_api_keys:
+  darsh: 57f6d5aab6f1a78b78fb181dcf32dfeca0e65f79
+  arjun: bac3a003428df951a8e0b9e3878002a3227bbf0c
+  shared: 2ec984489f9445078fa14448bc7da1f0c3604db6
+user: 
+
+cluster_data: fke
+num_mw_clusters: ???
+viz_metrics_start_epoch: 0
+viz_metrics_every_n_epoch: 5
+# Composing nested config with default
+defaults:
+  - data: kit-xyz-motion-word-mt
+  - model: asymov_mt
+  - machine: server
+  - trainer: gpu
+  - sampler: variable_conseq
+  - logger: wandb
+  - callback: base
+  - /path@path
+  - override hydra/job_logging: custom
+  - override hydra/hydra_logging: custom
+  - _self_
+
+callback:
+  best_ckpt_monitors: [['total/val', 'min'], ['Metrics/bleu/val', 'max'], ['Metrics/acc_teachforce/val', 'max'], ['Metrics/MPJPE_naive_none/val', 'min']]
+  
+  viz_ckpts: false
+  viz_ckpt:
+    start_epoch: 100
+    every_n_epochs: ${viz_metrics_every_n_epoch}
+  
+  last_ckpt:
+    every_n_epochs: 10
